@@ -1,0 +1,32 @@
+{
+  "name": "souffleur",
+  "version": "1.0.0",
+  "description": "Simple command line prompt with retry for empty answers",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "eslint lib spec *.js",
+    "test": "node spec/support/jasmine-runner.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/stojanovic/souffleur.git"
+  },
+  "keywords": [
+    "command",
+    "line",
+    "prompt",
+    "cli"
+  ],
+  "author": "Slobodan Stojanovic <slobodan@cloudhorizon.com> (http://slobodan.me/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stojanovic/souffleur/issues"
+  },
+  "homepage": "https://github.com/stojanovic/souffleur",
+  "devDependencies": {
+    "eslint": "^2.12.0",
+    "eslint-config-defaults": "^9.0.0",
+    "jasmine": "^2.4.1",
+    "jasmine-spec-reporter": "^2.5.0"
+  }
+}

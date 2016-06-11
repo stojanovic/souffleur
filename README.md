@@ -35,7 +35,7 @@ If you pass an empty answer it'll prompt again with the same question.
 
 Simple demo:
 
-<img width="500" src="demo.gif" alt="demo">
+<img width="640" src="demo.gif" alt="demo">
 
 ## Running tests
 

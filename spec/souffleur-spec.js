@@ -57,4 +57,29 @@ describe('Souffleur (prompt)', () => {
     process.stdin.emit('data', '')
     process.stdin.emit('data', 'answer')
   })
+
+  it('should work if you have spaces in the question', () => {
+    prompt('Question with spaces')
+      .then(results =>
+        expect(results)
+          .toBe({
+            'Question with spaces': 'answer'
+          })
+      )
+
+    process.stdin.emit('data', 'answer')
+  })
+
+  it('should keep the last answer if two questions are the same', () => {
+    prompt(['Question', 'Question'])
+      .then(results =>
+        expect(results)
+          .toBe({
+            'Question': 'Answer 2'
+          })
+      )
+
+    process.stdin.emit('data', 'Answer 1')
+    process.stdin.emit('data', 'Answer 2')
+  })
 })

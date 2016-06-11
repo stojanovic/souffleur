@@ -1,5 +1,5 @@
 # Souffleur
-Simple command line prompt with retry for empty answers
+Simple promise-based command line prompt with retry for empty answers and without external dependencies.
 
 <h1 align="center">
   <img width="150" src="souffleur.png" alt="souffleur">

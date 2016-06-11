@@ -1,6 +1,8 @@
 # Souffleur
 Simple promise-based command line prompt with retry for empty answers and without external dependencies.
 
+[![Build Status](https://travis-ci.org/stojanovic/souffleur.svg)](https://travis-ci.org/stojanovic/souffleur) [![npm version](https://badge.fury.io/js/souffleur.svg)](http://badge.fury.io/js/souffleur)
+
 <h1 align="center">
   <img width="150" src="souffleur.png" alt="souffleur">
   <br>

@@ -65,4 +65,4 @@ Feather icon by [Mister Pixel from the Noun Project](https://thenounproject.com/
 
 ## Licence
 
-MIT - see [LICENSE](LICENSE)
+MIT - see [LICENCE](LICENCE)

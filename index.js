@@ -2,6 +2,12 @@
 
 const readline = require('readline')
 
+const colors = {
+  reset: '\e[0m',
+  cyan: '\e[36m',
+  red: '\e[31m'
+}
+
 module.exports = function prompt(questions, results) {
   const rl = readline.createInterface({
     input: process.stdin,
@@ -10,10 +16,10 @@ module.exports = function prompt(questions, results) {
 
   function singlePrompt(question) {
     return new Promise((resolve, reject) =>
-      rl.question(`\x1b[36m${question}:\x1b[0m `, answer => {
+      rl.question(`${colors.cyan}${question}:${colors.reset} `, answer => {
         rl.close()
         if (!answer) {
-          console.log(`\n\x1b[31mAnswer can't be empty!\x1b[0m\n`)
+          console.log(`\n${colors.red}Answer can't be empty!${colors.reset}\n`)
           return reject(question)
         }
 

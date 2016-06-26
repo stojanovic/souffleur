@@ -4,6 +4,7 @@ const readline = require('readline')
 
 const colors = {
   reset: '\x1b[0m',
+  dim: '\x1b[2m',
   blue: '\x1b[34m',
   cyan: '\x1b[36m',
   green: '\x1b[32m',
@@ -28,18 +29,24 @@ module.exports = function prompt(questions, results) {
       }
 
     let color = questionObject.color || 'cyan'
+    let questionText = `${colors[color]}${questionObject.question}`
+
+    if (questionObject.default)
+      questionText += ` ${colors['dim']}(${questionObject.default})`
+
+    questionText += `:${colors.reset} `
 
     return new Promise((resolve, reject) =>
-      rl.question(`${colors[color]}${questionObject.question}:${colors.reset} `, answer => {
+      rl.question(questionText, answer => {
         rl.close()
-        if (!answer && !questionObject.optional) {
+        if (!answer && !questionObject.optional && !questionObject.default) {
           console.log(`\n${colors.red}Answer can't be empty!${colors.reset}\n`)
           return reject(question)
         }
 
         resolve({
           question: questionObject.question,
-          answer: answer || null
+          answer: answer || questionObject.default || null
         })
       })
     )

@@ -11,15 +11,29 @@ describe('Souffleur (prompt)', () => {
 
   it('should throw an error if at least one question is not provided', () =>
     expect(prompt)
-      .toThrowError('First argument needs to be an array or string')
+      .toThrowError('First argument needs to be an array, string or object')
   )
 
-  it('should throw an error if first argument is not a string or an array', () =>
+  it('should throw an error if first argument is not a string, an array or an object', () =>
     expect(() => prompt(123))
-      .toThrowError('First argument needs to be an array or string')
+      .toThrowError('First argument needs to be an array, string or object')
   )
 
   it('should return an object with question as a key and answer as a value if just one question is passed', () => {
+    prompt({
+      question: 'question'
+    })
+      .then(results =>
+        expect(results)
+          .toBe({
+            question: 'answer'
+          })
+      )
+
+    process.stdin.emit('data', 'answer')
+  })
+
+  it('should return an object with question as a key and answer as a value if just one question is passed as an object', () => {
     prompt('question')
       .then(results =>
         expect(results)

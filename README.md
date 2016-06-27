@@ -110,6 +110,12 @@ To pass multiple questions just pass an array of strings and objects.
 
 Pass your promise implementation if you don't want to use the default one, you can use Bluebird and any other A+ Promise library.
 
+#### - `return`
+
+Souffleur always returns an object with questions as keys and answers as values.
+
+If answer was empty, value will be null.
+
 ## Running tests
 
 Run all the tests:

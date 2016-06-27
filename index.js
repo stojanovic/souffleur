@@ -4,6 +4,7 @@ const readline = require('readline')
 
 const colors = {
   reset: '\x1b[0m',
+  default: '\x1b[39m',
   dim: '\x1b[2m',
   blue: '\x1b[34m',
   cyan: '\x1b[36m',

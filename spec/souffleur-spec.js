@@ -4,6 +4,7 @@
 const prompt = require('../index')
 
 describe('Souffleur (prompt)', () => {
+
   it('should be a function', () => {
     expect(typeof prompt)
       .toBe('function')
@@ -33,8 +34,22 @@ describe('Souffleur (prompt)', () => {
     process.stdin.emit('data', 'answer')
   })
 
-  it('should return an object with question as a key and answer as a value if just one question is passed as an object', () => {
+  it('should return an object with question as a key and answer as a value if just one question is passed as a string', () => {
     prompt('question')
+      .then(results =>
+        expect(results)
+          .toBe({
+            question: 'answer'
+          })
+      )
+
+    process.stdin.emit('data', 'answer')
+  })
+
+  it('should return an object with question as a key and answer as a value if just one question is passed as an object', () => {
+    prompt({
+      question: 'question'
+    })
       .then(results =>
         expect(results)
           .toBe({
@@ -72,6 +87,36 @@ describe('Souffleur (prompt)', () => {
     process.stdin.emit('data', 'answer')
   })
 
+  it('should not retry if the answer is empty and optional', () => {
+    prompt({
+      question: 'question',
+      optional: true
+    })
+      .then(results =>
+        expect(results)
+          .toBe({
+            question: null
+          })
+      )
+
+    process.stdin.emit('data', '')
+  })
+
+  it('should use the default answer if the answer is empty and default one exists', () => {
+    prompt({
+      question: 'question',
+      default: 42
+    })
+      .then(results =>
+        expect(results)
+          .toBe({
+            question: 42
+          })
+      )
+
+    process.stdin.emit('data', '')
+  })
+
   it('should work if you have spaces in the question', () => {
     prompt('Question with spaces')
       .then(results =>
@@ -97,3 +142,6 @@ describe('Souffleur (prompt)', () => {
     process.stdin.emit('data', 'Answer 2')
   })
 })
+
+process.stdout.setMaxListeners(30)
+process.stdin.setMaxListeners(30)

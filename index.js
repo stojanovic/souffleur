@@ -13,7 +13,8 @@ const colors = {
   yellow: '\x1b[33m'
 }
 
-module.exports = function prompt(questions, results) {
+module.exports = function prompt(questions, PromiseImplementation, results) {
+  Promise = PromiseImplementation || global.Promise
   const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
@@ -39,6 +40,7 @@ module.exports = function prompt(questions, results) {
     return new Promise((resolve, reject) =>
       rl.question(questionText, answer => {
         rl.close()
+
         if (!answer && !questionObject.optional && !questionObject.default) {
           console.log(`\n${colors.red}Answer can't be empty!${colors.reset}\n`)
           return reject(question)

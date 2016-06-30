@@ -1,6 +1,6 @@
 {
   "name": "souffleur",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple command line prompt with retry for empty answers",
   "main": "index.js",
   "scripts": {

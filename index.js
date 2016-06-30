@@ -68,12 +68,12 @@ module.exports = function prompt(questions, PromiseImplementation, results) {
     return singlePrompt(questions.shift())
       .then(response => {
         results[response.question] = response.answer
-        return prompt(questions, results)
+        return prompt(questions, Promise, results)
       })
       .catch(question => {
         if (typeof question === 'string' || typeof question === 'object') {
           questions.unshift(question)
-          return prompt(questions, results)
+          return prompt(questions, Promise, results)
         }
 
         return question

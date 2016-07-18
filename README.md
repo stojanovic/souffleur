@@ -10,7 +10,7 @@ Simple promise-based command line prompt with retry for empty answers and withou
 
 ## Installation
 
-[![](https://nodei.co/npm/soufleur.svg?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/soufleur)
+[![](https://nodei.co/npm/souffleur.svg?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/souffleur)
 
 ```bash
 npm install souffleur
